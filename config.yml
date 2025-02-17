@@ -1,0 +1,9 @@
+recipe: default.v1
+language: en
+pipeline:
+- name: NLUCommandAdapter
+
+policies:
+- name: FlowPolicy
+- name: IntentlessPolicy
+assistant_id: 20250217-185017-chewy-biography
