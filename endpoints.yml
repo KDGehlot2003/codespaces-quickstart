@@ -41,18 +41,15 @@ action_endpoint:
 #  password: password
 #  queue: queue
 
-# The lines below activate contextual rephrasing, using the default OpenAI language model.
-# Ensure the OPENAI_API_KEY is set to prevent any missing API key errors.
-# For more details, refer to the documentation:
-# https://rasa.com/docs/rasa-pro/concepts/contextual-response-rephraser
-# To enable the rephraser, remove the comment symbols in the lines below.
-#nlg:
-#   type: rephrase
+# Allow rephrasing of responses using a Rasa-hosted model
+nlg:
+  type: rephrase
+  llm:
+    model_group: rasa_command_generation_model
 
 model_groups:
-  - id: openai-gpt-4
+  - id: rasa_command_generation_model
     models:
-      - provider: openai
-        model: openai/gpt-4
-        request_timeout: 7
-        max_tokens: 256
+      - provider: rasa
+        model: rasa/cmd_gen_codellama_13b_calm_demo
+        api_base: "https://tutorial-llm.rasa.ai"
